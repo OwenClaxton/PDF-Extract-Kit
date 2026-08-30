@@ -10,7 +10,8 @@ authors = [
 ]
 description = "A Comprehensive Toolkit for High-Quality PDF Content Extraction."
 readme = "README.md"
-license = { file="LICENSE" }
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE.md"]
 requires-python = ">=3.10"
 dependencies = [
     "PyPDF2",
@@ -18,17 +19,13 @@ dependencies = [
     "pyyaml",
     "frontend",
     "pymupdf",
-    opencv-python = "^4.6.0"
-    # Add other common dependencies
+    "opencv-python>=4.6.0",
+    "pyarrow<21.0.0"
 ]
 
 [project.optional-dependencies]
-layout_detection = [
-    "transformers",  # for layoutlmv3
-    # Add other dependencies for layout detection
-]
-formula_detection = [
-    "ultralytics",  # for yolov8
-    # Add other dependencies for formula detection
-]
-# Add additional dependencies for other models
+layout_detection = ["transformers"]
+formula_detection = ["ultralytics"]
+
+[tool.setuptools.packages.find]
+include = ["pdf_extract_kit*"]
